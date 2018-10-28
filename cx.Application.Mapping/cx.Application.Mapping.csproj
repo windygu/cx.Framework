@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3A90867A-CAE4-45B9-A690-ACDC6012B458}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>cx.Application.Mapping</RootNamespace>
+    <AssemblyName>cx.Application.Mapping</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="LR_App\DTImgMap.cs" />
+    <Compile Include="LR_App\FunctionMap.cs" />
+    <Compile Include="LR_App\FunctionSchemeMap.cs" />
+    <Compile Include="LR_App\MyFunctionMap.cs" />
+    <Compile Include="LR_Authorize\AuthorizeMap.cs" />
+    <Compile Include="LR_Authorize\DataAuthorizeConditionMap.cs" />
+    <Compile Include="LR_Authorize\DataAuthorizeRelationMap.cs" />
+    <Compile Include="LR_Authorize\FilterIPMap.cs" />
+    <Compile Include="LR_Authorize\FilterTimeMap.cs" />
+    <Compile Include="LR_Authorize\UserRelationMap.cs" />
+    <Compile Include="LR_CRM\CrmCashBalanceMap.cs" />
+    <Compile Include="LR_CRM\CrmChanceMap.cs" />
+    <Compile Include="LR_CRM\CrmCustomerContactMap.cs" />
+    <Compile Include="LR_CRM\CrmCustomerMap.cs" />
+    <Compile Include="LR_CRM\CrmExpensesMap.cs" />
+    <Compile Include="LR_CRM\CrmInvoiceMap.cs" />
+    <Compile Include="LR_CRM\CrmOrderEntryMap.cs" />
+    <Compile Include="LR_CRM\CrmOrderMap.cs" />
+    <Compile Include="LR_CRM\CrmReceivableMap.cs" />
+    <Compile Include="LR_CRM\CrmTrailRecordMap.cs" />
+    <Compile Include="LR_Excel\ExcelExportMap.cs" />
+    <Compile Include="LR_Excel\ExcelImportFieldMap.cs" />
+    <Compile Include="LR_Excel\ExcelImportMap.cs" />
+    <Compile Include="LR_Form\FormRelationMap.cs" />
+    <Compile Include="LR_Form\FormSchemeInfoMap.cs" />
+    <Compile Include="LR_Form\FormSchemeMap.cs" />
+    <Compile Include="LR_IM\IMContactsMap.cs" />
+    <Compile Include="LR_IM\IMMsgMap.cs" />
+    <Compile Include="LR_IM\IMSysUserMap.cs" />
+    <Compile Include="LR_OA\EmailConfigMap.cs" />
+    <Compile Include="LR_OA\EmailReceiveMap.cs" />
+    <Compile Include="LR_OA\EmailSendMap.cs" />
+    <Compile Include="LR_OA\FileFolderMap.cs" />
+    <Compile Include="LR_OA\FileInfoMap.cs" />
+    <Compile Include="LR_OA\JQueryGanttMap.cs" />
+    <Compile Include="LR_OA\NewsMap.cs" />
+    <Compile Include="LR_OA\ScheduleMap.cs" />
+    <Compile Include="LR_Organization\CompanyMap.cs" />
+    <Compile Include="LR_Organization\DepartmentMap.cs" />
+    <Compile Include="LR_Organization\PostMap.cs" />
+    <Compile Include="LR_Organization\RoleMap.cs" />
+    <Compile Include="LR_Organization\UserMap.cs" />
+    <Compile Include="LR_Report\ReportTempMap.cs" />
+    <Compile Include="LR_SystemDemo\DemoleaveMap.cs" />
+    <Compile Include="LR_System\AnnexesFileMap.cs" />
+    <Compile Include="LR_System\AreaMap.cs" />
+    <Compile Include="LR_System\CodeRule\CodeRuleMap.cs" />
+    <Compile Include="LR_System\CodeRule\CodeRuleSeedMap.cs" />
+    <Compile Include="LR_System\CustmerQueryMap.cs" />
+    <Compile Include="LR_System\Database\DatabaseLinkMap.cs" />
+    <Compile Include="LR_System\Database\DbDraftMap.cs" />
+    <Compile Include="LR_System\Database\DbFieldMap.cs" />
+    <Compile Include="LR_System\DataItem\DataItemDetailMap.cs" />
+    <Compile Include="LR_System\DataItem\DataItemMap.cs" />
+    <Compile Include="LR_System\DataSourceMap.cs" />
+    <Compile Include="LR_System\InterfaceMap.cs" />
+    <Compile Include="LR_System\LogMap.cs" />
+    <Compile Include="LR_System\Module\ModuleButtonMap.cs" />
+    <Compile Include="LR_System\Module\ModuleColumnMap.cs" />
+    <Compile Include="LR_System\Module\ModuleFormMap.cs" />
+    <Compile Include="LR_System\Module\ModuleMap.cs" />
+    <Compile Include="LR_WorkFlow\WfConfluenceMap.cs" />
+    <Compile Include="LR_WorkFlow\WfDelegateRuleMap.cs" />
+    <Compile Include="LR_WorkFlow\WfDelegateRuleRelationMap.cs" />
+    <Compile Include="LR_WorkFlow\WfProcessInstanceMap.cs" />
+    <Compile Include="LR_WorkFlow\WfSchemeAuthorizeMap.cs" />
+    <Compile Include="LR_WorkFlow\WfSchemeInfoMap.cs" />
+    <Compile Include="LR_WorkFlow\WfSchemeMap.cs" />
+    <Compile Include="LR_WorkFlow\WfTaskHistoryMap.cs" />
+    <Compile Include="LR_WorkFlow\WfTaskMap.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\cx.Application.AppMagager\cx.Application.AppMagager.csproj">
+      <Project>{d9a3b471-8155-479e-aa16-0646b83b654b}</Project>
+      <Name>cx.Application.AppMagager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cx.Application.Base\cx.Application.Base.csproj">
+      <Project>{5c251e96-af2b-4348-99f1-6a28e4faebb4}</Project>
+      <Name>cx.Application.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cx.Application.CRM\cx.Application.CRM.csproj">
+      <Project>{1061f659-8b41-450f-839f-15485f276e9e}</Project>
+      <Name>cx.Application.CRM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cx.Application.Excel\cx.Application.Excel.csproj">
+      <Project>{cdff3685-0ef8-4102-b29f-54d8cef5a5ec}</Project>
+      <Name>cx.Application.Excel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cx.Application.Form\cx.Application.Form.csproj">
+      <Project>{6c42ab27-a6b4-4bf1-9485-0cb71f31d3ce}</Project>
+      <Name>cx.Application.Form</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cx.Application.IM\cx.Application.IM.csproj">
+      <Project>{aa54c001-ab8f-4b5c-ae85-fe81b447c532}</Project>
+      <Name>cx.Application.IM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cx.Application.OA\cx.Application.OA.csproj">
+      <Project>{9fb27e85-50b3-4efd-9028-e985ec438b95}</Project>
+      <Name>cx.Application.OA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cx.Application.Organization\cx.Application.Organization.csproj">
+      <Project>{0a034095-65be-4106-9272-1c9a838aa624}</Project>
+      <Name>cx.Application.Organization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cx.Application.Report\cx.Application.Report.csproj">
+      <Project>{f2dee964-8cbb-4455-88a5-0352f6b5b5f8}</Project>
+      <Name>cx.Application.Report</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cx.Application.TwoDevelopment\cx.Application.TwoDevelopment.csproj">
+      <Project>{c7ae2c6e-d3a7-4c06-8683-1338703e9c31}</Project>
+      <Name>cx.Application.TwoDevelopment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cx.Application.WorkFlow\cx.Application.WorkFlow.csproj">
+      <Project>{74b646f0-f229-4e7f-8b4b-4c7806474846}</Project>
+      <Name>cx.Application.WorkFlow</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="LR_CodeDemo\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

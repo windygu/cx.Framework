@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CDFF3685-0EF8-4102-B29F-54D8CEF5A5EC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>cx.Application.Excel</RootNamespace>
+    <AssemblyName>cx.Application.Excel</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Pechkin, Version=0.5.8.2, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\CPechkin.0.0.09.12\lib\net20\Pechkin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Pechkin.Synchronized, Version=0.5.8.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CPechkin.0.0.09.12\lib\net20\Pechkin.Synchronized.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing">
+      <HintPath>..\packages\CPechkin.0.0.09.12\lib\net20\System.Drawing.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Export\ExcelExportBLL.cs" />
+    <Compile Include="Export\ExcelExportEntity.cs" />
+    <Compile Include="Export\ExcelExportIBLL.cs" />
+    <Compile Include="Export\ExcelExportService.cs" />
+    <Compile Include="Import\ExcelImportBLL.cs" />
+    <Compile Include="Import\ExcelImportEntity.cs" />
+    <Compile Include="Import\ExcelImportFieldEntity.cs" />
+    <Compile Include="Import\ExcelImportIBLL.cs" />
+    <Compile Include="Import\ExcelImportService.cs" />
+    <Compile Include="ModuleExport\ModuleExportBLL.cs" />
+    <Compile Include="ModuleExport\ModuleExportIBLL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="libeay32.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libgcc_s_dw2-1.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mingwm10.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ssleay32.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="wkhtmltox0.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\cx.Application.Base\cx.Application.Base.csproj">
+      <Project>{5c251e96-af2b-4348-99f1-6a28e4faebb4}</Project>
+      <Name>cx.Application.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cx.Cache.Base\cx.Cache.Base.csproj">
+      <Project>{aede7cf2-65f5-40b7-8edf-5768a96988c0}</Project>
+      <Name>cx.Cache.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cx.Cache.Factory\cx.Cache.Factory.csproj">
+      <Project>{fca92bdf-336b-4c44-84f9-869a27916bb5}</Project>
+      <Name>cx.Cache.Factory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cx.Cache.Redis\cx.Cache.Redis.csproj">
+      <Project>{be812b9b-3954-4860-bef7-31a775c07718}</Project>
+      <Name>cx.Cache.Redis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cx.DataBase.Repository\cx.DataBase.Repository.csproj">
+      <Project>{cae41532-bf58-4197-85e7-192a2006325f}</Project>
+      <Name>cx.DataBase.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cx.DataBase\cx.DataBase.csproj">
+      <Project>{c6107976-f15d-41d0-ab54-ebe1b8dcf3ab}</Project>
+      <Name>cx.DataBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cx.Util\cx.Util.csproj">
+      <Project>{00e08cc0-7cff-4dc2-835f-6a113d133bca}</Project>
+      <Name>cx.Util</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

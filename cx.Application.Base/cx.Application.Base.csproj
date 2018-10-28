@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5C251E96-AF2B-4348-99F1-6A28E4FAEBB4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>cx.Application.Base</RootNamespace>
+    <AssemblyName>cx.Application.Base</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuthorizeModule\Authorize\AuthorizeBLL.cs" />
+    <Compile Include="AuthorizeModule\Authorize\AuthorizeEntity.cs" />
+    <Compile Include="AuthorizeModule\Authorize\AuthorizeIBLL.cs" />
+    <Compile Include="AuthorizeModule\Authorize\AuthorizeService.cs" />
+    <Compile Include="AuthorizeModule\DataAuthorize\DataAuthorizeBLL.cs" />
+    <Compile Include="AuthorizeModule\DataAuthorize\DataAuthorizeConditionEntity.cs" />
+    <Compile Include="AuthorizeModule\DataAuthorize\DataAuthorizeIBLL.cs" />
+    <Compile Include="AuthorizeModule\DataAuthorize\DataAuthorizeRelationEntity.cs" />
+    <Compile Include="AuthorizeModule\DataAuthorize\DataAuthorizeService.cs" />
+    <Compile Include="AuthorizeModule\FilterIP\FilterIPBLL.cs" />
+    <Compile Include="AuthorizeModule\FilterIP\FilterIPEntity.cs" />
+    <Compile Include="AuthorizeModule\FilterIP\FilterIPIBLL.cs" />
+    <Compile Include="AuthorizeModule\FilterIP\FilterIPService.cs" />
+    <Compile Include="AuthorizeModule\FilterTime\FilterTimeBLL.cs" />
+    <Compile Include="AuthorizeModule\FilterTime\FilterTimeEntity.cs" />
+    <Compile Include="AuthorizeModule\FilterTime\FilterTimeIBLL.cs" />
+    <Compile Include="AuthorizeModule\FilterTime\FilterTimeService.cs" />
+    <Compile Include="AuthorizeModule\UserRelation\UserRelationBLL.cs" />
+    <Compile Include="AuthorizeModule\UserRelation\UserRelationEntity.cs" />
+    <Compile Include="AuthorizeModule\UserRelation\UserRelationIBLL.cs" />
+    <Compile Include="AuthorizeModule\UserRelation\UserRelationService.cs" />
+    <Compile Include="CodeGeneratorModule\BaseModel.cs" />
+    <Compile Include="CodeGeneratorModule\CodeConfigModel.cs" />
+    <Compile Include="CodeGeneratorModule\CodeFormTabModel.cs" />
+    <Compile Include="CodeGeneratorModule\CodeGenerator.cs" />
+    <Compile Include="CodeGeneratorModule\CodeGeneratorApp.cs" />
+    <Compile Include="CodeGeneratorModule\ColModel.cs" />
+    <Compile Include="CodeGeneratorModule\DbTableModel.cs" />
+    <Compile Include="CodeGeneratorModule\QueryModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SystemModule\Annexes\AnnexesFileBLL.cs" />
+    <Compile Include="SystemModule\Annexes\AnnexesFileEntity.cs" />
+    <Compile Include="SystemModule\Annexes\AnnexesFileIBLL.cs" />
+    <Compile Include="SystemModule\Annexes\AnnexesFileService.cs" />
+    <Compile Include="SystemModule\Area\AreaBLL.cs" />
+    <Compile Include="SystemModule\Area\AreaEntity.cs" />
+    <Compile Include="SystemModule\Area\AreaIBLL.cs" />
+    <Compile Include="SystemModule\Area\AreaService.cs" />
+    <Compile Include="SystemModule\CodeRule\CodeRuleBLL.cs" />
+    <Compile Include="SystemModule\CodeRule\CodeRuleEntity.cs" />
+    <Compile Include="SystemModule\CodeRule\CodeRuleFormatModel.cs" />
+    <Compile Include="SystemModule\CodeRule\CodeRuleIBLL.cs" />
+    <Compile Include="SystemModule\CodeRule\CodeRuleSeedEntity.cs" />
+    <Compile Include="SystemModule\CodeRule\CodeRuleService.cs" />
+    <Compile Include="SystemModule\CustmerQuery\CustmerQueryBLL.cs" />
+    <Compile Include="SystemModule\CustmerQuery\CustmerQueryEntity.cs" />
+    <Compile Include="SystemModule\CustmerQuery\CustmerQueryIBLL.cs" />
+    <Compile Include="SystemModule\CustmerQuery\CustmerQueryModel.cs" />
+    <Compile Include="SystemModule\CustmerQuery\CustmerQueryService.cs" />
+    <Compile Include="SystemModule\DatabaseLink\DatabaseLinkBLL.cs" />
+    <Compile Include="SystemModule\DatabaseLink\DatabaseLinkEntity.cs" />
+    <Compile Include="SystemModule\DatabaseLink\DatabaseLinkIBLL.cs" />
+    <Compile Include="SystemModule\DatabaseLink\DatabaseLinkModel.cs" />
+    <Compile Include="SystemModule\DatabaseLink\DatabaseLinkService.cs" />
+    <Compile Include="SystemModule\DatabaseTable\DatabaseTableBLL.cs" />
+    <Compile Include="SystemModule\DatabaseTable\DatabaseTableFieldModel.cs" />
+    <Compile Include="SystemModule\DatabaseTable\DatabaseTableIBLL.cs" />
+    <Compile Include="SystemModule\DatabaseTable\DatabaseTableModel.cs" />
+    <Compile Include="SystemModule\DatabaseTable\DatabaseTableService.cs" />
+    <Compile Include="SystemModule\DataItem\DataItemBLL.cs" />
+    <Compile Include="SystemModule\DataItem\DataItemDetailEntity.cs" />
+    <Compile Include="SystemModule\DataItem\DataItemEntity.cs" />
+    <Compile Include="SystemModule\DataItem\DataItemIBLL.cs" />
+    <Compile Include="SystemModule\DataItem\DataItemModel.cs" />
+    <Compile Include="SystemModule\DataItem\DataItemService.cs" />
+    <Compile Include="SystemModule\DataSource\DataSourceBLL.cs" />
+    <Compile Include="SystemModule\DataSource\DataSourceEntity.cs" />
+    <Compile Include="SystemModule\DataSource\DataSourceIBLL.cs" />
+    <Compile Include="SystemModule\DataSource\DataSourceService.cs" />
+    <Compile Include="SystemModule\DbDraft\DbDraftBLL.cs" />
+    <Compile Include="SystemModule\DbDraft\DbDraftEntity.cs" />
+    <Compile Include="SystemModule\DbDraft\DbDraftIBLL.cs" />
+    <Compile Include="SystemModule\DbDraft\DbDraftService.cs" />
+    <Compile Include="SystemModule\DbField\DbFieldBLL.cs" />
+    <Compile Include="SystemModule\DbField\DbFieldEntity.cs" />
+    <Compile Include="SystemModule\DbField\DbFieldIBLL.cs" />
+    <Compile Include="SystemModule\DbField\DbFieldService.cs" />
+    <Compile Include="SystemModule\Interface\InterfaceBLL.cs" />
+    <Compile Include="SystemModule\Interface\InterfaceEntity.cs" />
+    <Compile Include="SystemModule\Interface\InterfaceIBLL.cs" />
+    <Compile Include="SystemModule\Interface\InterfaceService.cs" />
+    <Compile Include="SystemModule\Log\LogBLL.cs" />
+    <Compile Include="SystemModule\Log\LogEntity.cs" />
+    <Compile Include="SystemModule\Log\LogService.cs" />
+    <Compile Include="SystemModule\Module\ModuleBLL.cs" />
+    <Compile Include="SystemModule\Module\ModuleButtonEntity.cs" />
+    <Compile Include="SystemModule\Module\ModuleColumnEntity.cs" />
+    <Compile Include="SystemModule\Module\ModuleEntity.cs" />
+    <Compile Include="SystemModule\Module\ModuleFormEntity.cs" />
+    <Compile Include="SystemModule\Module\ModuleIBLL.cs" />
+    <Compile Include="SystemModule\Module\ModuleService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\cx.Application.Organization\cx.Application.Organization.csproj">
+      <Project>{0a034095-65be-4106-9272-1c9a838aa624}</Project>
+      <Name>cx.Application.Organization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cx.Cache.Base\cx.Cache.Base.csproj">
+      <Project>{aede7cf2-65f5-40b7-8edf-5768a96988c0}</Project>
+      <Name>cx.Cache.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cx.Cache.Factory\cx.Cache.Factory.csproj">
+      <Project>{fca92bdf-336b-4c44-84f9-869a27916bb5}</Project>
+      <Name>cx.Cache.Factory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cx.DataBase.Repository\cx.DataBase.Repository.csproj">
+      <Project>{cae41532-bf58-4197-85e7-192a2006325f}</Project>
+      <Name>cx.DataBase.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cx.DataBase\cx.DataBase.csproj">
+      <Project>{c6107976-f15d-41d0-ab54-ebe1b8dcf3ab}</Project>
+      <Name>cx.DataBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cx.Loger\cx.Loger.csproj">
+      <Project>{e45961c9-4831-415a-b9a0-a9d023abde56}</Project>
+      <Name>cx.Loger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cx.Util\cx.Util.csproj">
+      <Project>{00e08cc0-7cff-4dc2-835f-6a113d133bca}</Project>
+      <Name>cx.Util</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

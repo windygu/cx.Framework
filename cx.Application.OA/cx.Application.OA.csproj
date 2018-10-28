@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9FB27E85-50B3-4EFD-9028-E985EC438B95}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>cx.Application.OA</RootNamespace>
+    <AssemblyName>cx.Application.OA</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Spire.Barcode, Version=2.3.0.16040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.Office.3.0\lib\net40\Spire.Barcode.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Spire.DataExport, Version=3.5.131.4040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.Office.3.0\lib\net40\Spire.DataExport.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Spire.DataExport.ResourceMgr, Version=1.6.71.4040, Culture=neutral, PublicKeyToken=4bc1500157862925, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.Office.3.0\lib\net40\Spire.DataExport.ResourceMgr.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Spire.Doc, Version=6.5.6.4040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.Office.3.0\lib\net40\Spire.Doc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Spire.DocViewer.Forms, Version=3.4.1.14040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.Office.3.0\lib\net40\Spire.DocViewer.Forms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Spire.License, Version=1.3.6.40, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.Office.3.0\lib\net40\Spire.License.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Spire.Pdf, Version=4.5.1.2040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.Office.3.0\lib\net40\Spire.Pdf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Spire.PdfViewer.Forms, Version=3.4.1.14340, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.Office.3.0\lib\net40\Spire.PdfViewer.Forms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Spire.Presentation, Version=3.5.1.9040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.Office.3.0\lib\net40\Spire.Presentation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Spire.XLS, Version=8.5.0.6040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.Office.3.0\lib\net40\Spire.XLS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Email\EmailBLL.cs" />
+    <Compile Include="Email\EmailConfig\EmailConfigBLL.cs" />
+    <Compile Include="Email\EmailConfig\EmailConfigEntity.cs" />
+    <Compile Include="Email\EmailConfig\EmailConfigIBLL.cs" />
+    <Compile Include="Email\EmailConfig\EmailConfigService.cs" />
+    <Compile Include="Email\EmailIBLL.cs" />
+    <Compile Include="Email\EmailReceive\EmailReceiveBLL.cs" />
+    <Compile Include="Email\EmailReceive\EmailReceiveEntity.cs" />
+    <Compile Include="Email\EmailReceive\EmailReceiveIBLL.cs" />
+    <Compile Include="Email\EmailReceive\EmailReceiveService.cs" />
+    <Compile Include="Email\EmailSend\EmailSendBLL.cs" />
+    <Compile Include="Email\EmailSend\EmailSendEntity.cs" />
+    <Compile Include="Email\EmailSend\EmailSendIBLL.cs" />
+    <Compile Include="Email\EmailSend\EmailSendService.cs" />
+    <Compile Include="Email\EmailService.cs" />
+    <Compile Include="File\FileFolder\FileFolderBLL.cs" />
+    <Compile Include="File\FileFolder\FileFolderEntity.cs" />
+    <Compile Include="File\FileFolder\FileFolderIBLL.cs" />
+    <Compile Include="File\FileFolder\FileFolderService.cs" />
+    <Compile Include="File\FileInfo\FileInfoBLL.cs" />
+    <Compile Include="File\FileInfo\FileInfoEntity.cs" />
+    <Compile Include="File\FileInfo\FileInfoIBLL.cs" />
+    <Compile Include="File\FileInfo\FileInfoService.cs" />
+    <Compile Include="File\FilePreview\FilePreviewBLL.cs" />
+    <Compile Include="File\FilePreview\FilePreviewIBLL.cs" />
+    <Compile Include="Gantt\JQueryGanttBLL.cs" />
+    <Compile Include="Gantt\JQueryGanttEntity.cs" />
+    <Compile Include="Gantt\JQueryGanttIBLL.cs" />
+    <Compile Include="Gantt\JQueryGanttService.cs" />
+    <Compile Include="News\NewsBLL.cs" />
+    <Compile Include="News\NewsEntity.cs" />
+    <Compile Include="News\NewsIBLL.cs" />
+    <Compile Include="News\NewsService.cs" />
+    <Compile Include="Notice\NoticeBLL.cs" />
+    <Compile Include="Notice\NoticeIBLL.cs" />
+    <Compile Include="Notice\NoticeService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schedule\ScheduleBLL.cs" />
+    <Compile Include="Schedule\ScheduleEntity.cs" />
+    <Compile Include="Schedule\ScheduleIBLL.cs" />
+    <Compile Include="Schedule\ScheduleService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\cx.DataBase.Repository\cx.DataBase.Repository.csproj">
+      <Project>{cae41532-bf58-4197-85e7-192a2006325f}</Project>
+      <Name>cx.DataBase.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cx.Util\cx.Util.csproj">
+      <Project>{00e08cc0-7cff-4dc2-835f-6a113d133bca}</Project>
+      <Name>cx.Util</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
