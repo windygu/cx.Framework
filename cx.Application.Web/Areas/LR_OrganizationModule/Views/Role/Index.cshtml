@@ -2,7 +2,13 @@
     ViewBag.Title = "角色管理";
     Layout = "~/Views/Shared/_Index.cshtml";
 }
-<div class="lr-layout">
+<div class="lr-layout lr-layout-left-center" id="lr_layout">
+    <div class="lr-layout-left">
+        <div class="lr-layout-wrap">
+            <div class="lr-layout-title lrlg">公司信息</div>
+            <div id="companyTree" class="lr-layout-body"></div>
+        </div>
+    </div>
     <div class="lr-layout-center">
         <div class="lr-layout-wrap lr-layout-wrap-notitle">
             <div class="lr-layout-tool">

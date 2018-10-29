@@ -11,6 +11,7 @@ var bootstrap = function ($, cx) {
     "use strict";
     var page = {
         init: function () {
+            page.inittree();
             page.initGrid();
             page.bind();
         },
@@ -180,6 +181,27 @@ var bootstrap = function ($, cx) {
                     });
                 }
             });
+        },
+        inittree: function () {
+            $('#companyTree').lrtree({
+                url: top.$.rootUrl + '/LR_OrganizationModule/Company/GetTree',
+                param: { parentId: '0' },
+                nodeClick: page.treeNodeClick
+            });
+            $('#companyTree').lrtreeSet('setValue', '53298b7a-404c-4337-aa7f-80b2a4ca6681');
+        },
+        treeNodeClick: function (item) {
+            companyId = item.id;
+            $('#titleinfo').text(item.text);
+
+            $('#department_select').lrselectRefresh({
+                // 访问数据接口地址
+                url: top.$.rootUrl + '/LR_OrganizationModule/Department/GetTree',
+                // 访问数据接口参数
+                param: { companyId: companyId, parentId: '0' },
+            });
+            departmentId = '';
+            page.search();
         },
         initGrid: function () {
             $('#gridtable').lrAuthorizeJfGrid({

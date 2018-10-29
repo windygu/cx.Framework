@@ -307,6 +307,7 @@ namespace cx.Util.Operat
                             userInfo.oICQ = userEntity.F_OICQ;
                             userInfo.weChat = userEntity.F_WeChat;
                             userInfo.companyId = userEntity.F_CompanyId;
+                            userInfo.companyName = string.IsNullOrEmpty(userEntity.F_CompanyId) ? "" : companyIBLL.GetEntity(userEntity.F_CompanyId).F_FullName;
                             userInfo.departmentId = userEntity.F_DepartmentId;
                             userInfo.openId = userEntity.F_OpenId;
                             userInfo.isSystem = userEntity.F_SecurityLevel == 1 ? true : false;

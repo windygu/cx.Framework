@@ -75,6 +75,10 @@ namespace cx.Util
         /// </summary>		
         public string companyId { get; set; }
         /// <summary>
+        /// 公司名称
+        /// </summary>
+        public string companyName { get; set; }
+        /// <summary>
         /// 所在公司及下属公司
         /// </summary>
         public List<string> companyIds { get; set; }

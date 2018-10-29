@@ -29,7 +29,7 @@ var bootstrap = function ($, cx) {
                 selectedRow = null;
                 cx.layerForm({
                     id: 'Form',
-                    title: '添加公司',
+                    title: '添加医院',
                     url: top.$.rootUrl + '/LR_OrganizationModule/Company/Form',
                     width: 750,
                     height: 500,
@@ -45,7 +45,7 @@ var bootstrap = function ($, cx) {
                 if (cx.checkrow(keyValue)) {
                     cx.layerForm({
                         id: 'Form',
-                        title: '编辑公司',
+                        title: '编辑医院',
                         url: top.$.rootUrl + '/LR_OrganizationModule/Company/Form',
                         width: 750,
                         height: 500,
