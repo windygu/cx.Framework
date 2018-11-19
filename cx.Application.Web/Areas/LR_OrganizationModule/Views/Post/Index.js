@@ -9,13 +9,16 @@ var selectedRow;
 var refreshGirdData;
 var bootstrap = function ($, cx) {
     "use strict";
-    var companyId = '';
+    var loginInfo = cx.clientdata.get(['userinfo']);
+    var companyId = loginInfo.companyId;
     var departmentId = '';
     var page = {
         init: function () {
-            page.inittree();
+            if (loginInfo.isSystem)
+                page.inittree();
             page.initGrid();
             page.bind();
+            page.search();
         },
         bind: function () {
             // 查询

@@ -9,8 +9,8 @@
 
     var _im = {
         init: function () {
-            _im.registerServer();
-            _im.connect();
+            //_im.registerServer();
+           // _im.connect();
         }
         // 连接服务端
         , connect: function () {

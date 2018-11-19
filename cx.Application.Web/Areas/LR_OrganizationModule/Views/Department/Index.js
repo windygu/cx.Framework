@@ -9,12 +9,15 @@ var selectedRow;
 var refreshGirdData;
 var bootstrap = function ($, cx) {
     "use strict";
-    var companyId = '';
+    var loginInfo = cx.clientdata.get(['userinfo']);
+    var companyId = loginInfo.companyId;
     var page = {
         init: function () {
-            page.inittree();
+            if (loginInfo.isSystem)
+                page.inittree();
             page.initGrid();
             page.bind();
+            page.search();
         },
         bind: function () {
             // 查询
@@ -67,7 +70,7 @@ var bootstrap = function ($, cx) {
                 if (cx.checkrow(keyValue)) {
                     cx.layerConfirm('是否确认删除该项！', function (res) {
                         if (res) {
-                            cx.deleteForm(top.$.rootUrl + '/LR_OrganizationModule/Department/DeleteForm', { keyValue: keyValue}, function () {
+                            cx.deleteForm(top.$.rootUrl + '/LR_OrganizationModule/Department/DeleteForm', { keyValue: keyValue }, function () {
                                 refreshGirdData();
                             });
                         }
@@ -94,12 +97,12 @@ var bootstrap = function ($, cx) {
                 headData: [
                         { label: "部门名称", name: "F_FullName", width: 200, align: "left" },
                         { label: "部门编号", name: "F_EnCode", width: 100, align: "left" },
-                        { label: "部门简称", name: "F_ShortName", width: 100, align: "left"},
+                        { label: "部门简称", name: "F_ShortName", width: 100, align: "left" },
                         { label: "部门性质", name: "F_Nature", width: 100, align: "left" },
-                        { label: "负责人", name: "F_Manager", width: 100, align: "left"},
+                        { label: "负责人", name: "F_Manager", width: 100, align: "left" },
                         { label: "电话号", name: "F_OuterPhone", width: 100, align: "left" },
                         { label: "分机号", name: "F_InnerPhone", width: 60, align: "center" },
-                        { label: "备注", name: "F_Description", width: 200, align: "left"}
+                        { label: "备注", name: "F_Description", width: 200, align: "left" }
                 ],
 
                 isTree: true,

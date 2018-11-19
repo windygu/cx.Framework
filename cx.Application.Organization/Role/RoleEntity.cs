@@ -98,6 +98,10 @@ namespace cx.Application.Organization
         /// <returns></returns>
         [Column("F_MODIFYUSERNAME")]
         public string F_ModifyUserName { get; set; }
+        /// <summary>
+        /// 医院主键
+        /// </summary>
+        public string F_CompanyId { get; set; }
         #endregion
 
         #region 扩展操作

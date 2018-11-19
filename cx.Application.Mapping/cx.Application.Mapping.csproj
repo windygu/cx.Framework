@@ -120,6 +120,7 @@
     <Compile Include="LR_WorkFlow\WfTaskHistoryMap.cs" />
     <Compile Include="LR_WorkFlow\WfTaskMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test_CodeDemo\A_TestMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -171,9 +172,7 @@
       <Name>cx.Application.WorkFlow</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="LR_CodeDemo\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

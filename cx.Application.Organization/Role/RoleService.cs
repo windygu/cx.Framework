@@ -65,14 +65,14 @@ namespace cx.Application.Organization
                 }
             }
         }
-        public IEnumerable<RoleEntity> GetPageList(Pagination pagination, string keyword)
+        public IEnumerable<RoleEntity> GetPageList(Pagination pagination, string companyId, string keyword)
         {
             try
             {
                 var strSql = new StringBuilder();
                 strSql.Append("SELECT ");
                 strSql.Append(fieldSql);
-                strSql.Append(" FROM LR_Base_Role t WHERE t.F_EnabledMark = 1 AND t.F_DeleteMark = 0 ");
+                strSql.Append(" FROM LR_Base_Role t WHERE t.F_EnabledMark = 1 AND t.F_DeleteMark = 0 AND F_CompanyId = '" + companyId + "'");
 
                 if (!string.IsNullOrEmpty(keyword))
                 {
@@ -80,7 +80,7 @@ namespace cx.Application.Organization
                     strSql.Append(" AND( t.F_FullName like @keyword or t.F_EnCode like @keyword ) ");
                 }
 
-                return this.BaseRepository().FindList<RoleEntity>(strSql.ToString(),new { keyword}, pagination);
+                return this.BaseRepository().FindList<RoleEntity>(strSql.ToString(), new { keyword }, pagination);
             }
             catch (Exception ex)
             {
@@ -185,7 +185,7 @@ namespace cx.Application.Organization
                 }
             }
 
-        } 
+        }
         #endregion
     }
 }

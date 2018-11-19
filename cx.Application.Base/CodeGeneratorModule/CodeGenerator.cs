@@ -20,14 +20,14 @@ namespace cx.Application.Base.CodeGeneratorModule
         private DatabaseTableIBLL databaseTableIBLL = new DatabaseTableBLL();
         private DatabaseLinkIBLL databaseLinkIBLL = new DatabaseLinkBLL();
 
-
         #region 通用
         /// <summary>
         /// 注释头
         /// </summary>
         /// <param name="baseConfigModel">配置信息</param>
         /// <returns></returns>
-        private string NotesCreate(CodeBaseConfigModel baseConfigModel) {
+        private string NotesCreate(CodeBaseConfigModel baseConfigModel)
+        {
             UserInfo userInfo = LoginUserInfo.Get();
 
             StringBuilder sb = new StringBuilder();
@@ -70,7 +70,8 @@ namespace cx.Application.Base.CodeGeneratorModule
             {
                 return "";
             }
-            else {
+            else
+            {
                 return "." + strBackArea;
             }
         }
@@ -83,7 +84,7 @@ namespace cx.Application.Base.CodeGeneratorModule
         /// <param name="baseConfigModel">基础配置信息</param>
         /// <param name="tableName">数据库表名</param>
         /// <returns></returns>
-        public string EntityCreate(CodeBaseConfigModel baseConfigModel,string tableName)
+        public string EntityCreate(CodeBaseConfigModel baseConfigModel, string tableName)
         {
 
             try
@@ -372,7 +373,7 @@ namespace cx.Application.Base.CodeGeneratorModule
 
                     sb.Append("        #endregion\r\n");
                 }
-               
+
 
                 sb.Append("    }\r\n");
                 sb.Append("}\r\n\r\n");
@@ -734,7 +735,7 @@ namespace cx.Application.Base.CodeGeneratorModule
         /// <param name="pDbTable">父级表数据</param>
         /// <param name="content">拼接代码内容</param>
         /// <param name="mainTable">主表名称</param>
-        private string DeleteToSelectSql(List<TreeModelEx<DbTableModel>> TableTree, DbTableModel pDbTable,string mainTable)
+        private string DeleteToSelectSql(List<TreeModelEx<DbTableModel>> TableTree, DbTableModel pDbTable, string mainTable)
         {
             string content = "";
             foreach (var tree in TableTree)
@@ -750,7 +751,7 @@ namespace cx.Application.Base.CodeGeneratorModule
                         content += "                var " + Str.FirstLower(tree.data.name) + "Entity = Get" + tree.data.name + "Entity(" + Str.FirstLower(pDbTable.name) + "Entity." + tree.data.relationField + "); \r\n";
                     }
                 }
-               content += DeleteToSelectSql(tree.ChildNodes, tree.data, mainTable);
+                content += DeleteToSelectSql(tree.ChildNodes, tree.data, mainTable);
             }
             return content;
         }
@@ -777,7 +778,7 @@ namespace cx.Application.Base.CodeGeneratorModule
                         content += "                    var " + Str.FirstLower(tree.data.name) + "EntityTmp = Get" + tree.data.name + "Entity(" + Str.FirstLower(pDbTable.name) + "Entity." + tree.data.relationField + "); \r\n";
                     }
                 }
-               content += UpdateToSelectSql(tree.ChildNodes, tree.data, mainTable);
+                content += UpdateToSelectSql(tree.ChildNodes, tree.data, mainTable);
             }
             return content;
         }
@@ -846,7 +847,7 @@ namespace cx.Application.Base.CodeGeneratorModule
                 sb.Append("using System.Collections.Generic;\r\n");
                 sb.Append("using System.Data;\r\n");
                 sb.Append("using System.Text;\r\n\r\n");
-                
+
 
                 sb.Append("namespace " + baseConfigModel.backProject + getBackArea(baseConfigModel.backArea) + "\r\n");
                 sb.Append("{\r\n");
@@ -1235,9 +1236,10 @@ namespace cx.Application.Base.CodeGeneratorModule
                     }
                     sb.Append(getServiceTry(content));
                 }
-               
+
                 // 获取树形数据列表
-                if (colData.isTree == "1" && colData.treeSource == "2") {
+                if (colData.isTree == "1" && colData.treeSource == "2")
+                {
                     content = "";
                     sb.Append("        /// <summary>\r\n");
                     sb.Append("        /// 获取树形数据\r\n");
@@ -1926,7 +1928,7 @@ namespace cx.Application.Base.CodeGeneratorModule
         /// <param name="colData">列表数据</param>
         /// <param name="baseInfo">基础数据</param>
         /// <returns></returns>
-        public string GridEditServiceCreate(string databaseLinkId,string dbTable,string dbTablePk, Dictionary<string, CodeFormCompontModel> compontMap, QueryModel queryData, ColModel colData, BaseModel baseInfo)
+        public string GridEditServiceCreate(string databaseLinkId, string dbTable, string dbTablePk, Dictionary<string, CodeFormCompontModel> compontMap, QueryModel queryData, ColModel colData, BaseModel baseInfo)
         {
             try
             {
@@ -2159,7 +2161,7 @@ namespace cx.Application.Base.CodeGeneratorModule
         /// <param name="queryData">查询数据</param>
         /// <param name="baseInfo">基础数据</param>
         /// <returns></returns>
-        public string ReportServiceCreate(string databaseLinkId, string strSql, List<ReportColModel> collist, QueryModel queryData,BaseModel baseInfo)
+        public string ReportServiceCreate(string databaseLinkId, string strSql, List<ReportColModel> collist, QueryModel queryData, BaseModel baseInfo)
         {
             try
             {
@@ -2213,7 +2215,7 @@ namespace cx.Application.Base.CodeGeneratorModule
                     {
                         querySqlField += ",\r\n";
                     }
-                    querySqlField += "                t." +field.field;
+                    querySqlField += "                t." + field.field;
                 }
                 #endregion
 
@@ -2452,7 +2454,8 @@ namespace cx.Application.Base.CodeGeneratorModule
                     sb.Append("        " + tableOne.name + "Entity Get" + tableOne.name + "Entity(string keyValue);\r\n");
                 }
 
-                if (colData.isTree == "1" && colData.treeSource == "2") {
+                if (colData.isTree == "1" && colData.treeSource == "2")
+                {
                     sb.Append("        /// <summary>\r\n");
                     sb.Append("        /// 获取左侧树形数据\r\n");
                     sb.Append("        /// <summary>\r\n");
@@ -2793,7 +2796,7 @@ namespace cx.Application.Base.CodeGeneratorModule
                 sb.Append("        /// <param name=\"list\">实体列表</param>\r\n");
                 sb.Append("        /// <returns></returns>\r\n");
                 sb.Append("        void SaveList(List<" + dbTable + "Entity> list);\r\n");
-                
+
                 sb.Append("        #endregion\r\n\r\n");
 
                 sb.Append("    }\r\n");
@@ -2986,7 +2989,7 @@ namespace cx.Application.Base.CodeGeneratorModule
                 string backProject = ConfigurationManager.AppSettings["BackProject"].ToString();
                 StringBuilder sb = new StringBuilder();
                 sb.Append("using cx.Util;\r\n");
-                sb.Append("using System;\r\n"); 
+                sb.Append("using System;\r\n");
                 sb.Append("using System.Data;\r\n");
                 sb.Append("using System.Collections.Generic;\r\n\r\n");
 
@@ -3085,14 +3088,15 @@ namespace cx.Application.Base.CodeGeneratorModule
                     sb.Append(getBllTry(content));
                 }
 
-                if (colData.isTree == "1" && colData.treeSource == "2") {
+                if (colData.isTree == "1" && colData.treeSource == "2")
+                {
                     sb.Append("        /// <summary>\r\n");
                     sb.Append("        /// 获取左侧树形数据\r\n");
                     sb.Append("        /// <summary>\r\n");
                     sb.Append("        /// <returns></returns>\r\n");
                     sb.Append("         public List<TreeModel> GetTree()\r\n");
                     content = "";
-                    content += "                DataTable list = "+ Str.FirstLower(baseInfo.name) +"Service.GetSqlTree();\r\n";
+                    content += "                DataTable list = " + Str.FirstLower(baseInfo.name) + "Service.GetSqlTree();\r\n";
                     content += "                List<TreeModel> treeList = new List<TreeModel>();\r\n";
                     content += "                foreach (DataRow item in list.Rows)\r\n";
                     content += "                {\r\n";
@@ -3414,7 +3418,7 @@ namespace cx.Application.Base.CodeGeneratorModule
         /// <param name="dbTablePk">数据表数据主键</param>
         /// <param name="colData">列表数据</param>
         /// <returns></returns>
-        public string GridEditBllCreate(BaseModel baseInfo, string dbTable,string dbTablePk, ColModel colData)
+        public string GridEditBllCreate(BaseModel baseInfo, string dbTable, string dbTablePk, ColModel colData)
         {
             try
             {
@@ -3434,7 +3438,7 @@ namespace cx.Application.Base.CodeGeneratorModule
                 sb.Append("        private " + baseInfo.name + "Service " + Str.FirstLower(baseInfo.name) + "Service = new " + baseInfo.name + "Service();\r\n\r\n");
                 #endregion
 
-                
+
 
                 #region 数据查询
                 // 获取数据
@@ -4705,18 +4709,34 @@ namespace cx.Application.Base.CodeGeneratorModule
                 sb.Append("    Layout = \"~/Views/Shared/_Index.cshtml\";\r\n");
                 sb.Append("}\r\n");
 
-                sb.Append("<div class=\"lr-layout " + (colData.isTree == "1" ? "lr-layout-left-center\"  id=\"lr_layout\" " : "\"") + "  >\r\n");
-                if (colData.isTree == "1") {
-                    sb.Append("    <div class=\"lr-layout-left\">\r\n");
-                    sb.Append("        <div class=\"lr-layout-wrap\">\r\n");
-                    sb.Append("            <div class=\"lr-layout-title lrlg \">树形列表</div>\r\n");
-                    sb.Append("            <div id=\"dataTree\" class=\"lr-layout-body\"></div>\r\n");
-                    sb.Append("        </div>\r\n");
-                    sb.Append("    </div>\r\n");
-                }
+                //sb.Append("<div class=\"lr-layout " + (colData.isTree == "1" ? "lr-layout-left-center\"  id=\"lr_layout\" " : "\"") + "  >\r\n");
+                //if (colData.isTree == "1") {
+                //    sb.Append("    <div class=\"lr-layout-left\">\r\n");
+                //    sb.Append("        <div class=\"lr-layout-wrap\">\r\n");
+                //    sb.Append("            <div class=\"lr-layout-title lrlg \">树形列表</div>\r\n");
+                //    sb.Append("            <div id=\"dataTree\" class=\"lr-layout-body\"></div>\r\n");
+                //    sb.Append("        </div>\r\n");
+                //    sb.Append("    </div>\r\n");
+                //}
+
+                sb.Append("@{ if (string.IsNullOrEmpty(cx.Util.LoginUserInfo.Get().companyId))\r\n");
+                sb.Append("    {\r\n");
+                sb.Append("        @Html.Raw(\" < div class='lr-layout lr-layout-left-center' id='lr_layout'>\");\r\n");
+                sb.Append("        @Html.Raw(\"    <div class='lr-layout-left'>\");\r\n");
+                sb.Append("        @Html.Raw(\"        <div class='lr-layout-wrap'>\");\r\n");
+                sb.Append("        @Html.Raw(\"            <div class='lr-layout-title lrlg '>医院信息</div>\");\r\n");
+                sb.Append("        @Html.Raw(\"            <div id ='dataTree' class='lr-layout-body'></div>\");\r\n");
+                sb.Append("        @Html.Raw(\"        </div>\");\r\n");
+                sb.Append("        @Html.Raw(\"    </div>\");\r\n");
+                sb.Append("    }\r\n");
+                sb.Append("    else\r\n");
+                sb.Append("    {\r\n");
+                sb.Append("        @Html.Raw(\"<div class='lr-layout'  >\");\r\n");
+                sb.Append("    }\r\n");
+                sb.Append("}\r\n");
 
                 sb.Append("    <div class=\"lr-layout-center\">\r\n");
-                sb.Append("        <div class=\"lr-layout-wrap "+ (colData.isTree == "1" ? "" : "lr-layout-wrap-notitle") + " \">\r\n");
+                sb.Append("        <div class=\"lr-layout-wrap " + (colData.isTree == "1" ? "" : "lr-layout-wrap-notitle") + " \">\r\n");
 
                 if (colData.isTree == "1")
                 {
@@ -4744,7 +4764,8 @@ namespace cx.Application.Base.CodeGeneratorModule
                         sb.Append("                                <div class=\"col-xs-" + (12 / Convert.ToInt32(item.portion)) + " lr-form-item\">\r\n");
                         sb.Append("                                    <div class=\"lr-form-item-title\">" + compont.title + "</div>\r\n");
 
-                        switch (compont.type) {
+                        switch (compont.type)
+                        {
                             case "text":
                             case "textarea":
                             case "datetimerange":
@@ -4777,8 +4798,10 @@ namespace cx.Application.Base.CodeGeneratorModule
                 {
                     sb.Append("                    <div class=\" btn-group btn-group-sm\" cx-authorize=\"yes\">\r\n");
 
-                    foreach (string btn in colData.btns) {
-                        switch (btn) {
+                    foreach (string btn in colData.btns)
+                    {
+                        switch (btn)
+                        {
                             case "add":
                                 sb.Append("                        <a id=\"lr_add\"   class=\"btn btn-default\"><i class=\"fa fa-plus\"></i>&nbsp;新增</a>\r\n");
                                 break;
@@ -5205,7 +5228,7 @@ namespace cx.Application.Base.CodeGeneratorModule
 
 
                 sb.Append("/*");
-                sb.Append(" * 版 本 v1.0 辰星科技开发框架(http://www.cx.cn)\r\n");
+                sb.Append(" * 版 本 v1.0 辰星科技开发框架\r\n");
                 sb.Append(" * Copyright (c) 山西辰星昇软件科技有限公司\r\n");
                 sb.Append(" * 创建人：" + userInfo.realName + "\r\n");
                 sb.Append(" * 日  期：" + DateTime.Now.ToString("yyyy-MM-dd HH:mm") + "\r\n");
@@ -5214,6 +5237,8 @@ namespace cx.Application.Base.CodeGeneratorModule
                 sb.Append("var refreshGirdData;\r\n");
                 sb.Append("var bootstrap = function ($, cx) {\r\n");
                 sb.Append("    \"use strict\";\r\n");
+                sb.Append(" var loginInfo = cx.clientdata.get(['userinfo']);");
+                sb.Append("var companyId = loginInfo.companyId; ");
 
                 if (queryData.isDate == "1")
                 {
@@ -5230,6 +5255,7 @@ namespace cx.Application.Base.CodeGeneratorModule
 
                 if (colData.isTree == "1")
                 {
+                    sb.Append("if (loginInfo.isSystem)");
                     sb.Append("            // 初始化左侧树形数据\r\n");
                     sb.Append("            $('#dataTree').lrtree({\r\n");
                     if (colData.treeSource == "1")
@@ -5242,8 +5268,9 @@ namespace cx.Application.Base.CodeGeneratorModule
                     }
                     sb.Append("                nodeClick: function (item) {\r\n");
                     sb.Append("                    page.search({ " + colData.treefieldRe + ": item.value });\r\n");
+                    sb.Append("                    companyId = item.value;");
                     sb.Append("                }\r\n");
-                    sb.Append("            });\r\n");                   
+                    sb.Append("            });\r\n");
                 }
 
                 if (queryData.isDate == "1")
@@ -5340,15 +5367,17 @@ namespace cx.Application.Base.CodeGeneratorModule
                 sb.Append("                location.reload();\r\n");
                 sb.Append("            });\r\n");
 
-                foreach (var btn in colData.btns) {
-                    switch (btn) {
+                foreach (var btn in colData.btns)
+                {
+                    switch (btn)
+                    {
                         case "add":
                             sb.Append("            // 新增\r\n");
                             sb.Append("            $('#lr_add').on('click', function () {\r\n");
                             sb.Append("                cx.layerForm({\r\n");
                             sb.Append("                    id: 'form',\r\n");
                             sb.Append("                    title: '新增',\r\n");
-                            sb.Append("                    url: top.$.rootUrl + '/" + baseInfo.outputArea + "/" + baseInfo.name + "/Form',\r\n");
+                            sb.Append("                    url: top.$.rootUrl + '/" + baseInfo.outputArea + "/" + baseInfo.name + "/Form?companyId=' + companyId,\r\n");
                             sb.Append("                    width: 600,\r\n");
                             sb.Append("                    height: 400,\r\n");
                             sb.Append("                    callBack: function (id) {\r\n");
@@ -5365,7 +5394,7 @@ namespace cx.Application.Base.CodeGeneratorModule
                             sb.Append("                    cx.layerForm({\r\n");
                             sb.Append("                        id: 'form',\r\n");
                             sb.Append("                        title: '编辑',\r\n");
-                            sb.Append("                        url: top.$.rootUrl + '/" + baseInfo.outputArea + "/" + baseInfo.name + "/Form?keyValue=' + keyValue,\r\n");
+                            sb.Append("                        url: top.$.rootUrl + '/" + baseInfo.outputArea + "/" + baseInfo.name + "/Form?keyValue=' + keyValue+ '&companyId=' + companyId,\r\n");
                             sb.Append("                        width: 600,\r\n");
                             sb.Append("                        height: 400,\r\n");
                             sb.Append("                        callBack: function (id) {\r\n");
@@ -5454,7 +5483,8 @@ namespace cx.Application.Base.CodeGeneratorModule
                             sb.Append("                        }");
                         }
                     }
-                    else if (compont.type == "checkbox") {
+                    else if (compont.type == "checkbox")
+                    {
                         sb.Append(",\r\n                        formatterAsync: function (callback, value, row, op,$cell) {\r\n");
                         if (compont.dataSource == "0")
                         {
@@ -5482,11 +5512,12 @@ namespace cx.Application.Base.CodeGeneratorModule
                             sb.Append("                        }");
                         }
                     }
-                    else if (compont.type == "organize" || compont.type == "currentInfo") {
+                    else if (compont.type == "organize" || compont.type == "currentInfo")
+                    {
                         if (compont.dataType == "company" || compont.dataType == "department" || compont.dataType == "user")
                         {
                             sb.Append(",\r\n                        formatterAsync: function (callback, value, row, op,$cell) {\r\n");
-                            sb.Append("                             cx.clientdata.getAsync('"+ compont.dataType + "', {\r\n");
+                            sb.Append("                             cx.clientdata.getAsync('" + compont.dataType + "', {\r\n");
                             sb.Append("                                 key: value,\r\n");
                             sb.Append("                                 callback: function (_data) {\r\n");
                             sb.Append("                                     callback(_data.name);\r\n");
@@ -5506,7 +5537,7 @@ namespace cx.Application.Base.CodeGeneratorModule
                 sb.Append("            });\r\n");
                 if (queryData.isDate != "1")
                 {
-                    sb.Append("            page.search();\r\n");
+                    //sb.Append("            page.search();\r\n");
                 }
                 sb.Append("        },\r\n");
                 sb.Append("        search: function (param) {\r\n");
@@ -5520,7 +5551,7 @@ namespace cx.Application.Base.CodeGeneratorModule
                 sb.Append("        }\r\n");
                 sb.Append("    };\r\n");
                 sb.Append("    refreshGirdData = function () {\r\n");
-                sb.Append("        page.search();\r\n");
+                sb.Append("        page.search({ F_CompanyId: loginInfo.companyId });\r\n");
                 sb.Append("    };\r\n");
                 sb.Append("    page.init();\r\n");
                 sb.Append("}\r\n");
@@ -5882,7 +5913,7 @@ namespace cx.Application.Base.CodeGeneratorModule
                         if (compont.dataType == "company" || compont.dataType == "department" || compont.dataType == "user")
                         {
                             sb.Append(",\r\n                        formatterAsync: function (callback, value, row, op,$cell) {\r\n");
-                            sb.Append("                             cx.clientdata.getAsync('"+ compont.dataType + "', {\r\n");
+                            sb.Append("                             cx.clientdata.getAsync('" + compont.dataType + "', {\r\n");
                             sb.Append("                                 key: value,\r\n");
                             sb.Append("                                 callback: function (_data) {\r\n");
                             sb.Append("                                     callback(_data.name);\r\n");
@@ -5955,7 +5986,7 @@ namespace cx.Application.Base.CodeGeneratorModule
         /// <param name="colData"></param>
         /// <param name="queryData"></param>
         /// <returns></returns>
-        public string GridEditIndexJSCreate(BaseModel baseInfo,string dbTablePk, Dictionary<string, CodeFormCompontModel> compontMap, ColModel colData, QueryModel queryData)
+        public string GridEditIndexJSCreate(BaseModel baseInfo, string dbTablePk, Dictionary<string, CodeFormCompontModel> compontMap, ColModel colData, QueryModel queryData)
         {
             try
             {
@@ -6579,7 +6610,8 @@ namespace cx.Application.Base.CodeGeneratorModule
         {
             foreach (var compont in componts)
             {
-                if (compont.type == "label") {
+                if (compont.type == "label")
+                {
                     sb.Append("    <div class=\"col-xs-" + (12 / Convert.ToInt32(compont.proportion)) + " lr-form-item\" style=\"padding:0;line-height:38px;text-align:center;font-size:20px;font-weight:bold;color:#333;\" >\r\n");
                     sb.Append("        <span>" + compont.table + "</span>\r\n");
                     sb.Append("    </div>\r\n");
@@ -6608,7 +6640,7 @@ namespace cx.Application.Base.CodeGeneratorModule
                             sb.Append("        <input id=\"" + compont.field + "\" type=\"text\" class=\"form-control\" " + strValid + " />\r\n");
                             break;
                         case "textarea":
-                            sb.Append("        <textarea id=\"" + compont.field + "\" class=\"form-control\" style=\"height:"+ compont.height + "px;\" " + strValid + " ></textarea>\r\n");
+                            sb.Append("        <textarea id=\"" + compont.field + "\" class=\"form-control\" style=\"height:" + compont.height + "px;\" " + strValid + " ></textarea>\r\n");
                             break;
                         case "texteditor":
                             sb.Append("        <div id=\"" + compont.field + "\" style=\"height:" + compont.height + "px;\"></div>\r\n");
@@ -6630,7 +6662,7 @@ namespace cx.Application.Base.CodeGeneratorModule
                             sb.Append("        <input id=\"" + compont.field + "\" type=\"text\" readonly class=\"form-control\" />\r\n");
                             break;
                         case "currentInfo":
-                            sb.Append("        <input id=\"" + compont.field + "\" type=\"text\" readonly class=\"form-control currentInfo lr-currentInfo-"+ compont.dataType + "\" />\r\n");
+                            sb.Append("        <input id=\"" + compont.field + "\" type=\"text\" readonly class=\"form-control currentInfo lr-currentInfo-" + compont.dataType + "\" />\r\n");
                             break;
                     }
                     sb.Append("    </div>\r\n");
@@ -6738,7 +6770,7 @@ namespace cx.Application.Base.CodeGeneratorModule
         /// </summary>
         /// <param name="sb">构建容器</param>
         /// <param name="list">表头列表信息</param>
-        private void BulidGridHead(StringBuilder sb, List<TreeModelEx<CodeGridFieldModel>> list,string table)
+        private void BulidGridHead(StringBuilder sb, List<TreeModelEx<CodeGridFieldModel>> list, string table)
         {
             foreach (var item in list)
             {
@@ -6746,7 +6778,8 @@ namespace cx.Application.Base.CodeGeneratorModule
                 {
                     sb.Append("                    {\r\n");
                     sb.Append("                        label: '" + item.data.name + "', name: 'l" + Guid.NewGuid().ToString().Replace("-", "") + "', width:100, align: '" + item.data.align + "'");
-                    if (item.ChildNodes != null && item.ChildNodes.Count > 0) {
+                    if (item.ChildNodes != null && item.ChildNodes.Count > 0)
+                    {
                         sb.Append("                        \r\n,children[");
                         BulidGridHead(sb, item.ChildNodes, table);
                         sb.Append("                        ]\r\n");
@@ -6757,7 +6790,8 @@ namespace cx.Application.Base.CodeGeneratorModule
                 {
                     sb.Append("                    {\r\n");
                     sb.Append("                        label: '" + item.data.name + "', name: '" + item.data.field + "', width:" + item.data.width + ", align: '" + item.data.align + "'");
-                    switch (item.data.type) {
+                    switch (item.data.type)
+                    {
                         case "input":
                             sb.Append("\r\n                        ,edit:{\r\n");
                             sb.Append("                            type:'input'\r\n");
@@ -6770,7 +6804,7 @@ namespace cx.Application.Base.CodeGeneratorModule
                             if (item.data.dataSource == "0")
                             {
                                 sb.Append("                            datatype: 'dataItem',\r\n");
-                                sb.Append("                            code:'"+ item.data.itemCode + "'\r\n");
+                                sb.Append("                            code:'" + item.data.itemCode + "'\r\n");
                             }
                             else
                             {
@@ -6800,7 +6834,8 @@ namespace cx.Application.Base.CodeGeneratorModule
                                 sb.Append("                            text:'" + item.data.showField + "',\r\n");
                                 sb.Append("                            value:'" + item.data.saveField + "',\r\n");
                             }
-                            if (!string.IsNullOrEmpty(item.data.dfvalue)) {
+                            if (!string.IsNullOrEmpty(item.data.dfvalue))
+                            {
                                 sb.Append("                            dfvalue:'" + item.data.dfvalue + "'\r\n");
                             }
                             sb.Append("                        }\r\n");
@@ -6844,7 +6879,8 @@ namespace cx.Application.Base.CodeGeneratorModule
                             sb.Append("                            type:'layer',\r\n");
                             sb.Append("                            change: function (data, rownum, selectData) {\r\n");
 
-                            foreach (var item2 in item.data.layerData) {
+                            foreach (var item2 in item.data.layerData)
+                            {
                                 sb.Append("                                data." + item2.value + " = selectData." + item2.name + ";\r\n");
                             }
                             sb.Append("                                $('#" + table + "').jfGridSet('updateRow', rownum);\r\n");
@@ -6873,7 +6909,8 @@ namespace cx.Application.Base.CodeGeneratorModule
                                 sb.Append("                                url: top.$.rootUrl + '/LR_SystemModule/DataItem/GetDetailList',\r\n");
                                 sb.Append("                                param: { itemCode: '" + item.data.itemCode + "' }\r\n");
                             }
-                            else {
+                            else
+                            {
                                 sb.Append("                                url: top.$.rootUrl + '/LR_SystemModule/DataSource/GetDataTable',\r\n");
                                 sb.Append("                                param: { code: '" + item.data.dataSourceId + "'\r\n} ");
                             }
@@ -6956,7 +6993,7 @@ namespace cx.Application.Base.CodeGeneratorModule
         /// <param name="formData">表单信息</param>
         /// <param name="compontMap">表单组件信息映射表</param>
         /// <returns></returns>
-        public string FormJsCreate(BaseModel baseInfo, List<DbTableModel> dbTableList, List<CodeFormTabModel> formData,Dictionary<string, CodeFormCompontModel> compontMap)
+        public string FormJsCreate(BaseModel baseInfo, List<DbTableModel> dbTableList, List<CodeFormTabModel> formData, Dictionary<string, CodeFormCompontModel> compontMap)
         {
             try
             {
@@ -7025,7 +7062,8 @@ namespace cx.Application.Base.CodeGeneratorModule
                             case "texteditor":
                                 sb.Append("            var " + compont.field + "UE =  UE.getEditor('" + compont.field + "');\r\n");
                                 sb.Append("            $('#" + compont.field + "')[0].ue =  " + compont.field + "UE;");
-                                if (!string.IsNullOrEmpty(compont.dfvalue)) {
+                                if (!string.IsNullOrEmpty(compont.dfvalue))
+                                {
                                     sb.Append("            " + compont.field + "UE.ready(function () { \r\n");
                                     sb.Append("            " + compont.field + "UE.setContent(" + compont.dfvalue + ");\r\n");
                                     sb.Append("            });\r\n");
@@ -7137,7 +7175,8 @@ namespace cx.Application.Base.CodeGeneratorModule
                                             sb.Append("                param: {} \r\n");
                                             sb.Append("            });\r\n");
                                         }
-                                        else {
+                                        else
+                                        {
                                             sb.Append("            $('#" + compont.field + "').lrselect({\r\n");
                                             sb.Append("                type: 'tree',\r\n");
                                             sb.Append("                allowSearch: true\r\n");
@@ -7153,12 +7192,13 @@ namespace cx.Application.Base.CodeGeneratorModule
                                         }
                                         break;
                                     case "company"://公司
-                                        sb.Append("            $('#" + compont.field+ "').lrCompanySelect({});\r\n");
+                                        sb.Append("            $('#" + compont.field + "').lrCompanySelect({});\r\n");
                                         break;
                                 }
                                 break;
                             case "currentInfo":
-                                switch (compont.dataType) {
+                                switch (compont.dataType)
+                                {
                                     case "company":
                                         sb.Append("            $('#" + compont.field + "')[0].lrvalue = cx.clientdata.get(['userinfo']).companyId;\r\n");
                                         sb.Append("            cx.clientdata.getAsync('company', {\r\n");
@@ -7271,7 +7311,7 @@ namespace cx.Application.Base.CodeGeneratorModule
         /// <param name="compontMap">表单组件信息映射表</param>
         /// <param name="workField">流程关联字段</param> 
         /// <returns></returns>
-        public string WfFormJsCreate(BaseModel baseInfo, List<DbTableModel> dbTableList, List<CodeFormTabModel> formData, Dictionary<string, CodeFormCompontModel> compontMap,string workField)
+        public string WfFormJsCreate(BaseModel baseInfo, List<DbTableModel> dbTableList, List<CodeFormTabModel> formData, Dictionary<string, CodeFormCompontModel> compontMap, string workField)
         {
             try
             {
@@ -7661,7 +7701,7 @@ namespace cx.Application.Base.CodeGeneratorModule
         /// <param name="formData">表单信息</param>
         /// <param name="compontMap">表单组件信息映射表</param>
         /// <returns></returns>
-        public string GridEditFormJsCreate(BaseModel baseInfo,List<CodeFormTabModel> formData, Dictionary<string, CodeFormCompontModel> compontMap)
+        public string GridEditFormJsCreate(BaseModel baseInfo, List<CodeFormTabModel> formData, Dictionary<string, CodeFormCompontModel> compontMap)
         {
             try
             {
@@ -7901,7 +7941,7 @@ namespace cx.Application.Base.CodeGeneratorModule
         /// <param name="projectPath">项目路径</param>
         /// <param name="filePath">文件相对路径</param>
         /// <param name="isContent">是否是内容还是编译文件</param>
-        public void CreateCodeFile(string path, string content,string projectPath,string filePath,bool isContent)
+        public void CreateCodeFile(string path, string content, string projectPath, string filePath, bool isContent)
         {
             try
             {

@@ -14,8 +14,7 @@ var departmentId = request('departmentId');
 var acceptClick;
 var bootstrap = function ($, cx) {
     "use strict";
-
-
+   
     var userlist = {};
     var userlistselected = [];
     var userlistselectedobj = {};
@@ -49,7 +48,7 @@ var bootstrap = function ($, cx) {
             $warp.append($cardbox);
             cx.clientdata.getAsync('department', {
                 key: item.F_DepartmentId,
-                callback: function (_data,op) {
+                callback: function (_data, op) {
                     $warp.find('[data-id="' + op.key + '"]').text(_data.name);
                 }
             });
@@ -84,13 +83,13 @@ var bootstrap = function ($, cx) {
         $warp.append(_html);
         cx.clientdata.getAsync('department', {
             key: useritem.F_DepartmentId,
-            callback: function (_data,op) {
+            callback: function (_data, op) {
                 $warp.find('[data-id="' + op.key + '"]').text(_data.name);
             }
         });
         cx.clientdata.getAsync('company', {
             key: useritem.F_CompanyId,
-            callback: function (_data,op) {
+            callback: function (_data, op) {
                 $warp.find('[data-id="' + op.key + '"]').text(_data.name);
             }
         });
@@ -127,7 +126,7 @@ var bootstrap = function ($, cx) {
                 $('#department_tree').lrtreeSet('refresh', {
                     url: top.$.rootUrl + '/LR_OrganizationModule/Department/GetTree',
                     // 访问数据接口参数
-                    param: { companyId: companyId},
+                    param: { companyId: companyId },
                 });
             });
             // 已选人员按钮
@@ -204,13 +203,13 @@ var bootstrap = function ($, cx) {
                         $warp.append($(_html));
                         cx.clientdata.getAsync('department', {
                             key: item.F_DepartmentId,
-                            callback: function (_data,op) {
+                            callback: function (_data, op) {
                                 $warp.find('[data-id="' + op.key + '"]').text(_data.name);
                             }
                         });
                         cx.clientdata.getAsync('company', {
                             key: item.F_CompanyId,
-                            callback: function (_data,op) {
+                            callback: function (_data, op) {
                                 $warp.find('[data-id="' + op.key + '"]').text(_data.name);
                             }
                         });

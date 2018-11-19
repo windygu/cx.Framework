@@ -57,10 +57,10 @@ namespace cx.Application.Web.Areas.LR_OrganizationModule.Controllers
         /// <returns></returns>
         [HttpGet]
         [AjaxOnly]
-        public ActionResult GetPageList(string pagination, string keyword)
+        public ActionResult GetPageList(string pagination, string companyId, string keyword)
         {
             Pagination paginationobj = pagination.ToObject<Pagination>();
-            var data = roleIBLL.GetPageList(paginationobj, keyword);
+            var data = roleIBLL.GetPageList(paginationobj, companyId, keyword);
             var jsonData = new
             {
                 rows = data,

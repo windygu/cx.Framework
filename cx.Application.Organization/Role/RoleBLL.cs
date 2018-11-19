@@ -88,11 +88,11 @@ namespace cx.Application.Organization
         /// <param name="pagination">分页参数</param>
         /// <param name="keyword">查询关键词</param>
         /// <returns></returns>
-        public List<RoleEntity> GetPageList(Pagination pagination, string keyword)
+        public List<RoleEntity> GetPageList(Pagination pagination,string companyId, string keyword)
         {
             try
             {
-                return (List<RoleEntity>)roleService.GetPageList(pagination, keyword);
+                return (List<RoleEntity>)roleService.GetPageList(pagination, companyId, keyword);
             }
             catch (Exception ex)
             {

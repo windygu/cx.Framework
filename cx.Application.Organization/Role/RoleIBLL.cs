@@ -29,7 +29,7 @@ namespace cx.Application.Organization
         /// <param name="pagination">分页参数</param>
         /// <param name="keyword">查询关键词</param>
         /// <returns></returns>
-        List<RoleEntity> GetPageList(Pagination pagination, string keyword);
+        List<RoleEntity> GetPageList(Pagination pagination,string companyId, string keyword);
          /// <summary>
         /// 获取角色数据列表
         /// </summary>

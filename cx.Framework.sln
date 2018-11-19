@@ -81,6 +81,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "应用", "应用", "{207459
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cx.Application.Web", "cx.Application.Web\cx.Application.Web.csproj", "{CAEF27A7-EA16-4A1C-B826-1EE8CC052E16}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tool", "Tool", "{87A81A2A-0802-4CEE-B140-09A720815FE2}"
+	ProjectSection(SolutionItems) = preProject
+		Tool\redis-desktop-manager-0.9.5.180825.exe = Tool\redis-desktop-manager-0.9.5.180825.exe
+		Tool\Redis-x64-3.2.100(安装版).msi = Tool\Redis-x64-3.2.100(安装版).msi
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

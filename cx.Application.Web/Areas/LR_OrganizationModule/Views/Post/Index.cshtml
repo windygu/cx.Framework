@@ -2,21 +2,34 @@
     ViewBag.Title = "岗位管理";
     Layout = "~/Views/Shared/_Index.cshtml";
 }
-<div class="lr-layout lr-layout-left-center" id="lr_layout">
-    <div class="lr-layout-left">
-        <div class="lr-layout-wrap">
-            <div class="lr-layout-title lrlg" >公司信息</div>
-            <div id="companyTree" class="lr-layout-body"></div>
-        </div>
-    </div>
+
+
+
+@{ if (string.IsNullOrEmpty(cx.Util.LoginUserInfo.Get().companyId))
+    {
+        @Html.Raw("<div class=\"lr-layout lr-layout-left-center\" id=\"lr_layout\">");
+        @Html.Raw("    <div class=\"lr-layout-left\">");
+        @Html.Raw("        <div class=\"lr-layout-wrap\">");
+        @Html.Raw("            <div class=\"lr-layout-title lrlg \">医院信息</div>");
+        @Html.Raw("            <div id=\"companyTree\" class=\"lr-layout-body\"></div>");
+        @Html.Raw("        </div>");
+        @Html.Raw("    </div>");
+    }
+    else
+    {
+        @Html.Raw("<div class=\"lr-layout \"  >");
+    }
+}
+
+
     <div class="lr-layout-center">
         <div class="lr-layout-wrap">
             <div class="lr-layout-title">
-                <span id="titleinfo" class="lrlg">未选择公司</span> - <span class="lrlg">岗位信息</span>
+                <span id="titleinfo" class="lrlg">@cx.Util.LoginUserInfo.Get().companyName</span> - <span class="lrlg">岗位信息</span>
             </div>
 
             <div class="lr-layout-tool">
-                <div class="lr-layout-tool-left">
+                @*<div class="lr-layout-tool-left">
                     <div class="lr-layout-tool-item">
                         <div id="department_select" style="border-radius: 4px;width:160px;"></div>
                     </div>
@@ -26,7 +39,7 @@
                     <div class="lr-layout-tool-item">
                         <a id="btn_Search" class="btn btn-primary btn-sm"><i class="fa fa-search"></i>&nbsp;<span class="lrlg">查询</span></a>
                     </div>
-                </div>
+                </div>*@
                 <div class="lr-layout-tool-right">
                     <div class=" btn-group btn-group-sm">
                         <a id="lr_refresh" class="btn btn-default"><i class="fa fa-refresh"></i></a>

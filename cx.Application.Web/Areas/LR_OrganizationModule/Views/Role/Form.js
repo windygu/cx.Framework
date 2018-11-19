@@ -5,7 +5,7 @@
  * 日 期：2018.04.18
  * 描 述：角色管理	
  */
-
+var companyId = request('companyId');
 var acceptClick;
 var keyValue = '';
 var bootstrap = function ($, cx) {
@@ -28,6 +28,7 @@ var bootstrap = function ($, cx) {
             return false;
         }
         var postData = $('#form').lrGetFormData(keyValue);
+        postData["F_CompanyId"] = companyId;
         $.lrSaveForm(top.$.rootUrl + '/LR_OrganizationModule/Role/SaveForm?keyValue=' + keyValue, postData, function (res) {
             // 保存成功后才回调
             if (!!callBack) {

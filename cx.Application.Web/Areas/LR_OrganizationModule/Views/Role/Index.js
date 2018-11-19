@@ -7,13 +7,18 @@
  */
 var selectedRow;
 var refreshGirdData;
+
 var bootstrap = function ($, cx) {
     "use strict";
+    var loginInfo = cx.clientdata.get(['userinfo']);
+    var cid = loginInfo.companyId;
     var page = {
         init: function () {
-            page.inittree();
+            if (loginInfo.isSystem)
+                page.inittree();
             page.initGrid();
             page.bind();
+            page.search();
         },
         bind: function () {
             // 查询
@@ -31,7 +36,7 @@ var bootstrap = function ($, cx) {
                 cx.layerForm({
                     id: 'form',
                     title: '添加角色',
-                    url: top.$.rootUrl + '/LR_OrganizationModule/Role/Form',
+                    url: top.$.rootUrl + '/LR_OrganizationModule/Role/Form?companyId=' + cid,
                     width: 500,
                     height: 340,
                     callBack: function (id) {
@@ -62,7 +67,7 @@ var bootstrap = function ($, cx) {
                 if (cx.checkrow(keyValue)) {
                     cx.layerConfirm('是否确认删除该项！', function (res) {
                         if (res) {
-                            cx.deleteForm(top.$.rootUrl + '/LR_OrganizationModule/Role/DeleteForm', { keyValue: keyValue}, function () {
+                            cx.deleteForm(top.$.rootUrl + '/LR_OrganizationModule/Role/DeleteForm', { keyValue: keyValue }, function () {
                                 refreshGirdData();
                             });
                         }
@@ -185,22 +190,20 @@ var bootstrap = function ($, cx) {
         inittree: function () {
             $('#companyTree').lrtree({
                 url: top.$.rootUrl + '/LR_OrganizationModule/Company/GetTree',
-                param: { parentId: '0' },
+                param: { parentId: cid },
                 nodeClick: page.treeNodeClick
             });
-            $('#companyTree').lrtreeSet('setValue', '53298b7a-404c-4337-aa7f-80b2a4ca6681');
         },
         treeNodeClick: function (item) {
-            companyId = item.id;
+            cid = item.id;
             $('#titleinfo').text(item.text);
-
             $('#department_select').lrselectRefresh({
                 // 访问数据接口地址
                 url: top.$.rootUrl + '/LR_OrganizationModule/Department/GetTree',
                 // 访问数据接口参数
-                param: { companyId: companyId, parentId: '0' },
+                param: { companyId: cid, parentId: '0' },
             });
-            departmentId = '';
+            //departmentId = '';
             page.search();
         },
         initGrid: function () {
@@ -232,6 +235,7 @@ var bootstrap = function ($, cx) {
         },
         search: function (param) {
             param = param || {};
+            param.companyId = cid;
             $('#gridtable').jfGridSet('reload', param);
         }
     };

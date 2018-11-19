@@ -9,14 +9,17 @@ var selectedRow;
 var refreshGirdData;
 var bootstrap = function ($, cx) {
     "use strict";
-    var companyId = '';
+    var loginInfo = cx.clientdata.get(['userinfo']);
+    var companyId = loginInfo.companyId;
     var departmentId = '';
 
     var page = {
         init: function () {
-            page.inittree();
+            if (loginInfo.isSystem)
+                page.inittree();
             page.initGrid();
             page.bind();
+            page.search();
         },
         bind: function () {
             // 查询
@@ -28,7 +31,7 @@ var bootstrap = function ($, cx) {
             // 部门选择
             $('#department_select').lrselect({
                 type: 'tree',
-                placeholder:'请选择部门',
+                placeholder: '请选择部门',
                 // 是否允许搜索
                 allowSearch: true,
                 select: function (item) {
@@ -132,7 +135,7 @@ var bootstrap = function ($, cx) {
                 if (cx.checkrow(keyValue)) {
                     cx.layerConfirm('是否确认要【重置密码】！', function (res) {
                         if (res) {
-                            cx.postForm(top.$.rootUrl + '/LR_OrganizationModule/User/ResetPassword', { keyValue: keyValue}, function () {
+                            cx.postForm(top.$.rootUrl + '/LR_OrganizationModule/User/ResetPassword', { keyValue: keyValue }, function () {
                             });
                         }
                     });
@@ -247,14 +250,14 @@ var bootstrap = function ($, cx) {
                 url: top.$.rootUrl + '/LR_OrganizationModule/User/GetPageList',
                 headData: [
                         { label: '账户', name: 'F_Account', width: 100, align: 'left' },
-                        { label: '姓名', name: 'F_RealName',  width: 160, align: 'left' },
+                        { label: '姓名', name: 'F_RealName', width: 160, align: 'left' },
                         {
                             label: '性别', name: 'F_Gender', width: 45, align: 'center',
                             formatter: function (cellvalue) {
                                 return cellvalue == 0 ? "女" : "男";
                             }
                         },
-                        { label: '手机', name: 'F_Mobile', width: 100, align: 'center'},
+                        { label: '手机', name: 'F_Mobile', width: 100, align: 'center' },
                         {
                             label: '部门', name: 'F_DepartmentId', width: 100, align: 'left',
                             formatterAsync: function (callback, value, row) {
